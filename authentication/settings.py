@@ -122,7 +122,7 @@ USE_TZ = True
 
 STATIC_URL = '/static/'
 
-STATICFILES_DIRS = (os.path.join(BASE_DIR,"static"),)
+STATICFILES_ROOT = (os.path.join(BASE_DIR,"staticfiles"),)
 
 STRIPE_SECRET_KEY = 'sk_test_x3I03f1KSYf0LRzrjmFfVJP1006dSL6R9u'
 STRIPE_PUBLISHABLE_KEY = 'pk_test_rCQRz9c8d4nQTfajnivFRGym00N1QXYdeX'
