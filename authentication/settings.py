@@ -11,6 +11,7 @@ https://docs.djangoproject.com/en/2.0/ref/settings/
 """
 
 import os
+import django_heroku
 
 # Build paths inside the project like this: os.path.join(BASE_DIR, ...)
 BASE_DIR = os.path.dirname(os.path.dirname(os.path.abspath(__file__)))
@@ -125,3 +126,5 @@ STATIC_ROOT = os.path.join(BASE_DIR,"staticfiles")
 
 STRIPE_SECRET_KEY = 'sk_test_x3I03f1KSYf0LRzrjmFfVJP1006dSL6R9u'
 STRIPE_PUBLISHABLE_KEY = 'pk_test_rCQRz9c8d4nQTfajnivFRGym00N1QXYdeX'
+
+django_heroku.settings(locals())
