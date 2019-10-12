@@ -1,0 +1,130 @@
+<!-- Front page of website which checks if user is logged in and displays their username -->
+{% extends "users/base.html" %}
+
+{% block body %}
+<div class="container-fluid">
+<div class="row">
+
+<div class="col-lg-2">
+  {% if request.user.is_authenticated %}
+  <p class="p-special"><b><u>{{request.user.username}}</u></b></p>
+  {% endif %}
+</div>
+
+<div class="col-lg-8" style="text-align:center;">
+  <h3 class="h3-main green-phase"><b>Welcome to Pineapple's and Pizza's</b></h3>
+</div>
+
+<div class="col-lg-2">
+  {% if request.user.is_authenticated %}
+  <p class="p-special"><u><i><b>Logged In</b></i></u></p>
+  {% endif %}
+</div>
+</div>
+
+<!-- Bootstrap Carousel which loops though images with hyperlinks to specific parts of the menu -->
+<div class="row">
+  <div class="col-lg-8 offset-lg-2">
+  <header>
+    <div id="carouselExampleIndicators" class="carousel slide carousel-fade" data-ride="carousel">
+      <ol class="carousel-indicators">
+        <li data-target="#carouselExampleIndicators" data-slide-to="0" class="active"></li>
+        <li data-target="#carouselExampleIndicators" data-slide-to="1"></li>
+        <li data-target="#carouselExampleIndicators" data-slide-to="2"></li>
+      </ol>
+      <div class="carousel-inner" role="listbox">
+        <!-- Slide One -->
+        <div class="carousel-item active" style="background-image:url('https://lh3.googleusercontent.com/gBFKL2rVu7kxP5pMNnjWr0JU0iv9dLC2U0-DlCPG_TWj3KR5zt0ubyowrt07VuzvnWsNkXbUcZtQ-XdbGw_fcGIJyq6aMPHW3fc1VYwj85JdbN0FKtvcfkwK-Z2irhj7V9slHwqVGw=w2400')">
+          <div class="carousel-caption d-none d-md-block">
+            <h3 class="display-4 p-slideshow"><b><a href="/menu">Our New Menu</a></b></h3>
+            <p class="p-slideshow"><b>Recipe's from the heart of Italy.</b></p>
+          </div>
+        </div>
+        <!-- Slide Two -->
+        <div class="carousel-item" style="background-image: url('https://lh3.googleusercontent.com/1EmR7kk_M7jb89LDAQ6hv0Vdj0XHYY4x0GuUhaVRShXJLFjKlWiYQXdFYOjL8KLEpa3HO9LVt_kl02RThVchL-ELqRs09UD4qq7Zzc1qKhq7mJSUfsh33JfZHaG76LqLKIV09W6xhA=w2400')">
+          <div class="carousel-caption d-none d-md-block">
+            <h3 class="display-4 p-slideshow"><b><a href="/menu#premium">The premium range</a></b></h3>
+            <p class="p-slideshow"><b>Crafted though a lifetime of refinement.</b></p>
+          </div>
+        </div>
+        <!-- Slide Three -->
+        <div class="carousel-item" style="background-image: url('https://lh3.googleusercontent.com/Pir5bA9C0iNiZDCYN2Jt683M1DG_59e52N0bjt6gEzPvncisYGe2uJxaVZj5INFJFwX0X6jyFurq6qj1LV3upbaF4FbikU3d7UIqasz7fLpRt48O8eer3g6J0uE4-oKsw36Ecz0Xqg=w2400')">
+          <div class="carousel-caption d-none d-md-block">
+            <h3 class="display-4 p-slideshow"><b><a href="/menu#dessert">Sumptuous Desserts</a></b></h3>
+            <p class="p-slideshow"><b>A Treat for the ages.</b></p>
+          </div>
+        </div>
+      </div>
+      <a class="carousel-control-prev" href="#carouselExampleIndicators" role="button" data-slide="prev">
+            <span class="carousel-control-prev-icon" aria-hidden="true"></span>
+            <span class="sr-only">Previous</span>
+          </a>
+      <a class="carousel-control-next" href="#carouselExampleIndicators" role="button" data-slide="next">
+            <span class="carousel-control-next-icon" aria-hidden="true"></span>
+            <span class="sr-only">Next</span>
+          </a>
+    </div>
+  </header>
+</div>
+</div>
+<!-- Exposition explaining background of business and what it's aims are.-->
+<section id="section1">
+<h3 class="h3-main green-phase"><i>The Birth Place Of Modern Pizzerias</i></h3>
+
+<div class="row">
+<div class="col-lg-10 offset-lg-1">
+  <img class="index-images" src="https://lh3.googleusercontent.com/KVaZ_VJTFn6aOy6pmmvag0h01wrbgwCXarbwYSW5oEWswpcKDgpWve-Mywz_w5nmXcg7m0IZdCFYDdliuoMR7iIwsDV8CVw-ubgKhm3QRgK5CZuNSLFX3WPfrEysgdiNQuaYyFPOpg=w2400">
+</div>
+</div>
+
+<div class="row">
+  <div class="col-lg-10 offset-lg-1">
+    <p class="p-main"> The roots of this company lie deep within Naples thoughout the 1940's and 50's where food was scarce due to the civil war that
+      ensued after Mussolini was overthrown. As the country was burning our founder Bernardo Chiellini built the first modern pizzeria in the embers
+      of a dying nation in an effort to unite people and stop the country deteriorating further. Bernardo believed food was the best way to bring people
+      together and that mentality runs though the company veins even to this day.
+     </p>
+  </div>
+</div>
+</section>
+
+<section id="section2">
+<h3 class="h3-main green-phase"><i> Traditional Qualities - Contemporary Values </i></h3>
+
+<div class="row">
+<div class="col-lg-10 offset-lg-1">
+  <img class="index-images" src="https://lh3.googleusercontent.com/8sTB0EWHEapN_2rxfAAjGmZ6b-bQn5bdAH6UuCg05rMjaZfbVHqR9MWXFwXqfLP7142yuHywhaRBm4YWoaFSAfwedgSckiVl71PPagl65XPzCK_O6RUY7Kbemq-Mlp9NfE3cMQc1OQ=w2400">
+</div>
+</div>
+
+<div class="row">
+  <div class="col-lg-10 offset-lg-1">
+    <p class="p-main"> We honor Bernardo's legacy today by upholding his uncompromising quality standards on which he built the company on.
+      This standard is the primary driving force behind our explosive growth in recent years, we now operate in 40 different countries
+      but our headquarters still remains in the original Naples pizzeria.
+     </p>
+  </div>
+</div>
+</section>
+
+<section id="section3">
+<h3 class="h3-main green-phase"><i> Looking To The Future </i></h3>
+
+<div class="row">
+<div class="col-lg-10 offset-lg-1">
+  <img class="index-images" src="https://lh3.googleusercontent.com/h0iScoquyzATS7PuMMew54IhcbrCRiBfvD3TkyfSTUfdMyznihkfeEqbx8mbbg8fHjlPmuVSUzhTKFNBsYEOgP_z_zTFXQJVtclm3ZI2P5BjuPxZIpHKKRS377FPAb62p0knfCaQEA=w2400">
+</div>
+</div>
+
+<div class="row">
+  <div class="col-lg-10 offset-lg-1">
+    <p class="p-main"> We aim to continue to improve upon the foundations that we were established upon and eventually spread the brand
+      to all corner's of the globe while also maintaining our integrity towards employess and customers. We hope you as the customer
+      join us on this adventure of ascending the boundaries of pizza innovation.
+     </p>
+  </div>
+</div>
+</section>
+
+</div>
+{% endblock %}

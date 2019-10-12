@@ -1,0 +1,22 @@
+{% if forloop.counter != 1 %}
+<section>
+{% endif %}
+<div class="row">
+  <div class="col-lg-7 offset-lg-1">
+    <img class="main-images"style="height:500px;width:100%" src="{{ i.image }}" alt="Sorry, this image could not be loaded.">
+  </div>
+  <div class="col-lg-3">
+    <p class="p-menu" <b>{{ i.title }}</b></p>
+    <p class="p-menu" style="font-size:20px;"> {{ i.description }}</p>
+    <button id="{{i.title}}" data-toggle="tooltip" data-placement="top" title="Looks Delicious" onclick="run('{{i.title}}')"class="purchase_button button tooltip-hidden"><b><span>£{{ i.price }} - Add To Basket</span></b></button>
+  </div>
+</div>
+<br>
+{% if forloop.counter != 1 %}
+</section>
+{% endif %}
+
+<!--
+HTML Code which uses a for loop to iterate though all the Meal
+data objects and display them within a BootStrap grid
+ --->

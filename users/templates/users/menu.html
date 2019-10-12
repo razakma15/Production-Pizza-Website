@@ -1,0 +1,46 @@
+<!--
+HTML code for the menu which loops though all the Meal data
+using Django template tags and displays the Meal pictures and titles
+though the further embedded template menu-loop.
+--->
+
+{% extends "users/base.html" %}
+{% block body %}
+
+{% if Main %}
+<p class="p-special green-phase"><u><i><b>Essential Pizza's</b></i></u></p>
+{% endif %}
+{% for i in Meal %}
+{% if i.type == "Main" %}
+{% include "users/menu-loop.html" %}
+{% endif %}
+{% endfor %}
+
+{% if Premium == True %}
+<p id="premium" class="p-special green-phase"><u><i><b>Premium Pizza's</b></i></u></p>
+{% endif %}
+{% for i in Meal %}
+{% if i.type == "Premium" %}
+{% include "users/menu-loop.html" %}
+{% endif %}
+{% endfor %}
+
+{% if Side == True %}
+<p class="p-special green-phase"><u><i><b>Side's</b></i></u></p>
+{% endif %}
+{% for i in Meal %}
+{% if i.type == "Side" %}
+{% include "users/menu-loop.html" %}
+{% endif %}
+{% endfor %}
+
+{% if Dessert == True %}
+<p id="dessert" class="p-special green-phase"><u><i><b>Dessert's</b></i></u></p>
+{% endif %}
+{% for i in Meal %}
+{% if i.type == "Dessert" %}
+{% include "users/menu-loop.html" %}
+{% endif %}
+{% endfor %}
+
+{% endblock %}

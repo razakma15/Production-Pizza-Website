@@ -1,0 +1,118 @@
+<!--Base template of all pages with header / footer and modals.-->
+<!DOCTYPE html>
+<html>
+    <head>
+      <!-- Loading all static,css,js and bootstrap files -->
+      {% load static %}
+      <link rel="stylesheet" type="text/css" href="{% static 'users/Base_Styles.css' %}">
+      <link rel="stylesheet" type="text/css" href="{% static 'users/Animations.css' %}">
+      <link rel="stylesheet" type="text/css" href="{% static 'users/Modal.css' %}">
+      <link rel="stylesheet" type="text/css" href="{% static 'users/BS_Carousel.css' %}">
+      <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.8.2/css/all.css" integrity="sha384-oS3vJWv+0UjzBfQzYUhtDYW+Pj2yciDJxpsK1OYPAYjqT085Qq/1cq5FLXAZQ7Ay" crossorigin="anonymous">
+      <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css" integrity="sha384-ggOyR0iXCbMQv3Xipma34MD+dH/1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZw1T" crossorigin="anonymous">
+      <script src="https://code.jquery.com/jquery-3.1.0.min.js"></script>
+      <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.7/umd/popper.min.js" integrity="sha384-UO2eT0CpHqdSJQ6hJty5KVphtPhzWj9WO1clHTMGa3JDZwrnQq4sF86dIHNDz0W1" crossorigin="anonymous"></script>
+      <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/js/bootstrap.min.js" integrity="sha384-JjSmVgyd0p3pXB1rRibZUAYoIIy6OrQ6VrjIEaFf/nJGzIxFDsf4x0xIM+B07jRM" crossorigin="anonymous"></script>
+      <script type="text/javascript" src="{% static 'users/Main_scripts.js' %}"></script>
+      <title>Pineapple's and Pizza's</title>
+      <meta charset="utf-8">
+    </head>
+    <body>
+      <!-- Header which includes login,logout and basket buttons -->
+      <div class="background-main">
+      <div class="icon-bar">
+        <a class="active" href="/"><i class="fa fa-home fa-xs"></i></a>
+        <a href="#RegistrationModal" data-toggle="modal"><i class="fa fa-user-plus fa-xs"></i></a>
+        <a href="#LoginModal" data-toggle="modal"><i class="fa fa-sign-in-alt fa-xs"></i></a>
+        <a href="/logout"><i class="fa fa-sign-out-alt fa-xs"></i></a>
+        <a id="basket_id" href="/basket"><i class="fa fa-shopping-cart fa-xs"></i><b><h10 class="cart-number" id="cart-number-id">{{basket_quantity}}</h10></b></a>
+      </div>
+      {% block body %}
+      {% endblock %}
+      </div>
+<!-- Divider for footer and modals which are referenced in header -->
+<section id="section4">
+<div class="row">
+  <div class="col-lg-4 offset-lg-4">
+    <img style='height: 75%; width: 100%; object-fit: contain;border-width:10px' src='https://lh3.googleusercontent.com/xXIxYTn50C3Xr1fK1vgwdSI_RGMxph6qY4pmHWc0gtJRo7XiZlqGiW-SX7oZDYTzdlrKo8eBr147oQqcosYStHBDosNZZCLkoW2EjvnpKWg51XhRYg5sYJQ9UBJfi8QhlaeyrZ8RDg=s300-p-k'>
+  </div>
+</div>
+
+<div class="row" style="margin-bottom:100px;">
+  <div class="col-lg-2 offset-lg-2">
+    <p class="p-main">Github</p>
+  </div>
+  <div class="col-lg-2">
+    <p  class="p-main"><a href="mailto:moh.100@live.com">Contact Us</a></p>
+  </div>
+  <div class="col-lg-2">
+    <p class="p-main"><a href="#LoginModal" data-toggle="modal">Log In</a></p>
+  </div>
+  <div class="col-lg-2">
+    <p class="p-main"><a href="/logout">Log Out</a></p>
+  </div>
+</div>
+</section>
+<!-- Registraion and Login Modals use forms to transfer data to server -->
+<div id="RegistrationModal" class="modal fade">
+	<div class="modal-dialog modal-login">
+		<div class="modal-content">
+			<div class="modal-header">
+				<div class="avatar">
+					<img src="https://lh3.googleusercontent.com/7OOFrqYiOJFn1VNU8fCMAaqv-EN0HlOHxaYIFz1VHMJ3NCVS_jeg2kY2eOPxRe6u3ajeXCroTH9o5YE8m0Y6He4ExxIEH1zTbuBBY0CpBYsKMufChKNRpajJdwSCHzWurXbgDvoPOg=w2400" alt="Avatar">
+				</div>
+				<h4 class="modal-title">Join Us Today!</h4>
+        <button type="button" class="close" data-dismiss="modal" aria-hidden="true">&times;</button>
+			</div>
+			<div class="modal-body">
+				<form action="{% url 'register' %}" method="post">{% csrf_token %}
+					<div class="form-group">
+						<input type="text" class="form-control" name="username" placeholder="Username" required="required">
+					</div>
+          <div class="form-group">
+						<input type="email" class="form-control" name="email" placeholder="E-mail Address" required="required">
+					</div>
+					<div class="form-group">
+						<input type="password" class="form-control" name="password" placeholder="Password" required="required">
+					</div>
+					<div class="form-group">
+						<button type="submit" class="btn btn-block login-btn">Register</button>
+					</div>
+				</form>
+			</div>
+		</div>
+	</div>
+</div>
+
+<div id="LoginModal" class="modal fade">
+	<div class="modal-dialog modal-login">
+		<div class="modal-content">
+			<div class="modal-header">
+				<div class="avatar">
+					<img src="https://lh3.googleusercontent.com/kYiS8mOzulbfFZLopcSkBK4njYmArmAIzLmJm6Ru8MoIkjZ4nc3_zWUcrx7kaVlYp1yEF4swVcyeAetr_aFuZNOMwRox8-uVQjnztkkYxePmzra_Ad_rJZya1dOeqoC-0WISzlvmvQ=s256-p-k" alt="Avatar">
+				</div>
+				<h4 class="modal-title">Log In Here</h4>
+                <button type="button" class="close" data-dismiss="modal" aria-hidden="true">&times;</button>
+			</div>
+			<div class="modal-body">
+				<form action="{% url 'login' %}" method="post">{% csrf_token %}
+					<div class="form-group">
+						<input type="text" class="form-control" name="username" placeholder="Username" required="required">
+					</div>
+          <div class="form-group">
+						<input type="email" class="form-control" name="email" placeholder="E-mail Address" required="required">
+					</div>
+					<div class="form-group">
+						<input type="password" class="form-control" name="password" placeholder="Password" required="required">
+					</div>
+					<div class="form-group">
+						<button type="submit" class="btn btn-block login-btn">Log In</button>
+					</div>
+				</form>
+			</div>
+		</div>
+	</div>
+</div>
+
+    </body>
+</html>

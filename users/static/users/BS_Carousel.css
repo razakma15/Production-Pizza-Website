@@ -1,0 +1,28 @@
+@keyframes border-green {
+  0%   {border-color: #05878c;}
+  50%  {border-color: #53d11d;}
+  100% {border-color: #05878c;}
+}
+
+.carousel-item {
+  height: 65vh;
+  min-height: 350px;
+  background: no-repeat center center scroll;
+  -webkit-background-size: cover;
+  -moz-background-size: cover;
+  -o-background-size: cover;
+  background-size: cover;
+}
+
+.carousel-inner {
+    border-color: #05878c;
+    border-style: solid;
+    border-width: medium;
+    animation-name: border-green;
+    animation-duration: 2s;
+    animation-iteration-count: infinite;
+}
+
+.carousel-control-prev-icon,.carousel-control-next-icon{
+  filter : invert(100%);
+}

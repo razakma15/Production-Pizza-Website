@@ -1,0 +1,60 @@
+<!-- Checkout page which displays all food items in basket and allows user to delete which item's he doesnt want.-->
+{% extends "users/base.html" %}
+
+{% block body %}
+<p class="p-special green-phase"><b>Checkout</b></p>
+<!-- Loops though Food objects included in the render context which allows admin's to programmatically add / remove items from the menu
+using the /admin interface without having to worry how they will be displayed-->
+{% for i in user_meals %}
+<div id="{{i.title}}">
+<div class="row">
+  <div class="col-lg-1 offset-lg-2">
+    <button id="test"onclick="food_element_destroy('{{i.title}}')"class="checkout_button tooltip-hidden" style="color:red;" data-toggle="tooltip" data-placement="top" title="Remove From Basket"><b>X</b></button>
+  </div>
+  <div class="col-lg-3">
+    <p class="p-menu"<b>{{ i.title }}</b></p>
+  </div>
+  <div class="col-lg-1">
+    <button onclick="checkout_run({{i.price}},'plus')" class="checkout_button"><b>+</b></button>
+  </div>
+  <div class="col-lg-1">
+    <button onclick="checkout_run({{i.price}},'minus')" class="checkout_button"><b>-</b></button>
+  </div>
+  <div class="col-lg-2">
+    <p id="{{i.price}}"class="p-checkout"><b>£ {{i.price}}</b></p>
+  </div>
+</div>
+<br>
+</div>
+{% endfor %}
+
+<div class="row">
+  <div class="col-lg-3 offset-lg-4">
+    <p id="final-checkout" class="p-special green-phase"><b>Total Cost</b></p>
+  </div>
+  <!-- Displays total cost of food and the stripe button to pay for it-->
+  <div class="col-lg-2" style="margin-top:47px;text-align:left;">
+    <form action="{% url 'charge' %}" method="post">
+    <input id="cost-input" name="total_cost" type="hidden" value=food_cost()>
+  {% csrf_token %}
+  <div id="Stripe_Button">
+  <script
+      src="https://checkout.stripe.com/checkout.js" class="stripe-button"
+      data-key="{{ key }}"
+      data-description="Payment for Pizza"
+      data-locale="auto">
+  </script>
+    </div>
+</form>
+  </div>
+</div>
+
+<script type="text/javascript">
+  document.addEventListener("DOMContentLoaded", () => {
+    food_cost()
+   });
+</script>
+
+
+
+{% endblock %}
